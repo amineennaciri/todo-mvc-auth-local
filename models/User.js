@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+//bcrypt is used for passwords, we encrypt the password so it is safely, saved in our database.
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String
 })
-
+// the unique:true, is used to say that the userName and email needs to be unique, therefore we won't be able to create two accounts using the same email.
 
 // Password hash middleware.
  

@@ -1,7 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
-
+// if someone want to login we send them to the login page, if they are already connected we redirect them to the todo page.
  exports.getLogin = (req, res) => {
     if (req.user) {
       return res.redirect('/todos')
@@ -21,7 +21,7 @@ const User = require('../models/User')
       return res.redirect('/login')
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  
+    // if the authentication is successful, we send a message 'Sucess! You are logged in.' and we redirect them to the todos page.
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
